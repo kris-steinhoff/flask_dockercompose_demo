@@ -1,0 +1,16 @@
+{% for message in messages %}
+<div>
+  <div><strong>{{ message.title }}</strong></div>
+  <div>{{ message.body }}</div>
+</div>
+<hr />
+{% endfor %}
+
+<form action="{{ url_for('home') }}" method="POST">
+
+<table>
+  <tr><th>title</th><td><input name="message_title" /></td></tr>
+  <tr><th>body</th><td><textarea name="message_body" rows="3"></textarea></td></tr>
+  <tr><th></th><td><button type="submit" class="btn btn-primary">Submit</button></td></tr>
+
+</form>

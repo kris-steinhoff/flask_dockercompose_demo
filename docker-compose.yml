@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    environment:
+      - 'DATABASE_URL=postgresql://postgres@db/postgres'
+      - 'FLASK_DEBUG=yes'
+      - 'FLASK_APP=/usr/src/app/messenger/app.py'
+    command: flask run --host 0.0.0.0 --port 5000
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
